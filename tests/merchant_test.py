@@ -7,6 +7,9 @@ class TestMerchant(unittest.TestCase):
     def setUp(self):
         self.merchant = Merchant("Tesco", 3)
 
+    def test_can_test(self):
+        self.assertEqual(True, True)
+
     def test_merchant_has_name(self):
         self.assertEqual(self.merchant.name, "Tesco")
 
