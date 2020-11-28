@@ -23,7 +23,7 @@ def select_all():
     return merchants
 
 def select(id):
-    sql = "SELECT * FROM tags where ID = %s"
+    sql = "SELECT * FROM merchants where ID = %s"
     values = [id]
     result = run_sql(sql, values)[0]
     merchant = Merchant(result["name"], result["id"])
