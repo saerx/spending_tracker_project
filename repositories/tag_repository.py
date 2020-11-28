@@ -16,7 +16,7 @@ def select_all():
     tags = []
     sql = "SELECT * FROM tags"
     results = run_sql(sql)
-    for results in results:
+    for result in results:
         tag = Tag(result["name"], result["id"])
         tags.append(tag)
     return tags
@@ -32,7 +32,7 @@ def select(id):
 #UPDATE
 
 def update(tag):
-    sql = "UPDATE tag SET name = %s WHERE id = %s"
+    sql = "UPDATE tags SET name = %s WHERE id = %s"
     values = [tag.name, tag.id]
     run_sql(sql, values)
 
