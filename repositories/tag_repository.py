@@ -9,6 +9,7 @@ def save(tag):
     results = run_sql(sql, values)
     id = results[0]["id"]
     tag.id = id
+    return tag
 
 #READ
 
