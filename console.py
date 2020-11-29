@@ -34,7 +34,7 @@ tag_repository.save(gifts)
 tesco = Merchant("Tesco")
 merchant_repository.save(tesco) 
 
-landlord = Merchant("landlord")
+landlord = Merchant("Landlord")
 merchant_repository.save(landlord)
 
 asda = Merchant("Asda")

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Tag Preferences</h2>
+
+{% for tag in tags %}
+
+<section>
+    <p>{{ tag.name }}</p>
+</section>
+    
+
+{% endfor %}
+{% endblock %}
