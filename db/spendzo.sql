@@ -15,6 +15,6 @@ CREATE TABLE tags (
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     amount FLOAT,
-    merchant_key SERIAL REFERENCES merchants(id),
+    merchant_id SERIAL REFERENCES merchants(id),
     tag_id SERIAL REFERENCES tags(id)
 );

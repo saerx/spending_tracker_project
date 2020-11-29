@@ -51,7 +51,7 @@ def update(transaction):
 # DELETE
 
 def delete_all():
-    sql = "DELTETE FROM transactions"
+    sql = "DELETE FROM transactions"
     run_sql(sql)
 
 
