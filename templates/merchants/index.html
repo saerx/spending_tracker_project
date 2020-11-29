@@ -3,17 +3,37 @@
     
 <h2>Merchant Preferences</h2>
 
-{% for merchant in merchants %}
+<ul>
+    {% for merchant in merchants %}
     
-<section>
-    <p>{{ merchant.name }}</p>
-</section>
+    <section>
+            <li>{{ merchant.name }}
+            <form action="/merchants/{{merchant.id}}/delete" method="POST">
+                <button type="submit">Delete Merchant</button>
+            </form></li>
+    </section>
+        
+     
+    {% endfor %}
+    
+    </ul>
 
+<h3>Add Merchant:</h3>
 
+<form action="/merchants" method="post">
 
+<div>
+    <label for="name">Merchant</label>
+    <input type="text"
+           name="name"
+           id="name"
+           placeholder="name"
+           required>
+</div>
 
-{% endfor %}
+<button type="submit">Add Merchant</button>
 
+</form>
 
 
 

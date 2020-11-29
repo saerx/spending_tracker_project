@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<h1>Your Spendzo</h1>
+
+{% for transaction in transactions %}
+
+<section>
+    <p>You spent £{{ transaction.amount }}0 on {{transaction.tag.name}} at {{transaction.merchant.name}}</p>
+</section>
+
+
+
+{% endfor %}
+
+{% endblock content %}
