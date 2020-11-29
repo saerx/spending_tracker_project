@@ -11,11 +11,11 @@ def tags():
     tags = tag_repository.select_all()
     return render_template("tags/index.html", tags=tags)
 
-#NEW
-#GET '/tags/new'
-@tags_blueprint.route("/tags/new", methods = ["GET"])
-def new_tag():
-    return render_template("tags/new.html")
+# #NEW
+# #GET '/tags/new'
+# @tags_blueprint.route("/tags/new", methods = ["GET"])
+# def new_tag():
+#     return render_template("tags/new.html")
 
 #CREATE
 #POST '/tags'

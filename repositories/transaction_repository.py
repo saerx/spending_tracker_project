@@ -59,3 +59,11 @@ def delete(id):
     sql = "DELETE FROM transactions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+
+def get_total():
+    total = 0
+    transactions = select_all()
+    for transaction in transactions:
+        total += transaction.amount
+    return total
