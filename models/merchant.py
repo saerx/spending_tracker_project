@@ -3,3 +3,9 @@ class Merchant:
         self.name = name
         self.id = id
         self.activated = activated
+
+    def mark_deactivated(self):
+        self.activated = False
+
+    def mark_activated(self):
+        self.activated = True

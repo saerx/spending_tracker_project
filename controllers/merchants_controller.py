@@ -27,3 +27,11 @@ def create_merchant():
 def delete_merchant(id):
     merchant_repository.delete(id)
     return redirect('/merchants')
+
+#UPDATE
+@merchants_blueprint.route("/merchants/<id>/change_status", methods=["POST"])
+def change_status(id):
+    merchant = merchant_repository.select(id)
+    name = merchant.id
+    new_merchant = Merchant(name, id)
+    merchant_repository.change_active_status(new_merchant)

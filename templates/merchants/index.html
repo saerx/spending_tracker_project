@@ -9,9 +9,16 @@
     <section>
             <li>{{ merchant.name }} ({% if merchant.activated %}
                 active
+                <form action="/merchants/{{merchant.id}}/change_status" method="POST">
+                    <button type="submit">Deactivate</button>
+                </form>
             {% else %}
                 de-activated
+                <form action="/merchants/{{merchant.id}}/change_status" method="POST">
+                    <button type="submit">Activate</button>
+                </form>
             {% endif %})
+            
             <form action="/merchants/{{merchant.id}}/delete" method="POST">
                 <button type="submit">Delete Merchant</button>
             </form></li>

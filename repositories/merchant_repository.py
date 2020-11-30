@@ -36,6 +36,15 @@ def update(merchant):
     values = [merchant.name, merchant.id]
     run_sql(sql, values)
 
+def change_active_status(merchant):
+    if merchant.activated == True:
+        sql = "UPDATE merchants SET activated = False WHERE id = %s"
+        values = [merchant.id]
+        run_sql(sql, values)
+    else:
+        sql = "UPDATE merchants SET activated = True WHERE id = %s"
+    
+
 # DELETE
 
 def delete_all():

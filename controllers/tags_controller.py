@@ -33,4 +33,3 @@ def create_tag():
 def delete_tag(id):
     tag_repository.delete(id)
     return redirect('/tags')
-  
