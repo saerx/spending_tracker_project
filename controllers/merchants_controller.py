@@ -31,14 +31,6 @@ def delete_merchant(id):
     return redirect('/merchants')
 
 #UPDATE
-# @merchants_blueprint.route("/merchants/<id>/change_status", methods=["POST"])
-# def change_status(id):
-#     # import pdb; pdb.set_trace()
-#     name = request.form["name"]
-#     activated = request.form["activated"]
-#     merchant = Merchant(name, activated, id)
-#     merchant_repository.update(merchant)
-#     return redirect("/merchants")
 
 @merchants_blueprint.route("/merchants/<id>/deactivate", methods=["POST"])
 def deactivate(id):

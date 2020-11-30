@@ -11,12 +11,6 @@ def tags():
     tags = tag_repository.select_all()
     return render_template("tags/index.html", tags=tags)
 
-# #NEW
-# #GET '/tags/new'
-# @tags_blueprint.route("/tags/new", methods = ["GET"])
-# def new_tag():
-#     return render_template("tags/new.html")
-
 #CREATE
 #POST '/tags'
 @tags_blueprint.route("/tags", methods = ["POST"])
@@ -33,3 +27,15 @@ def create_tag():
 def delete_tag(id):
     tag_repository.delete(id)
     return redirect('/tags')
+
+#UPDATE
+
+@tags_blueprint.route("/tags/<id>/deactivate", methods=["POST"])
+def deactivate(id):
+    tag_repository.deactivate(id)
+    return redirect("/tags")
+
+@tags_blueprint.route("/tags/<id>/activate", methods=["POST"])
+def activate(id):
+    tag_repository.activate(id)
+    return redirect("/tags")
