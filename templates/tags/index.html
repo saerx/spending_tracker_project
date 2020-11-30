@@ -8,7 +8,11 @@
 {% for tag in tags %}
 
 <section>
-        <li>{{ tag.name }}
+        <li>{{ tag.name }} ({% if tag.activated %}
+            active
+        {% else %}
+            de-activated
+        {% endif %})
         <form action="/tags/{{tag.id}}/delete" method="POST">
             <button type="submit">Delete Tag</button>
         </form></li>

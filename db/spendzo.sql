@@ -5,11 +5,13 @@ DROP TABLE IF EXISTS tags;
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255)
+    activated BOOlEAN
 );
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255),
+    activated BOOLEAN
 );
 
 CREATE TABLE transactions (
