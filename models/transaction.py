@@ -4,3 +4,6 @@ class Transaction:
         self.merchant = merchant
         self.tag = tag
         self.id = id
+
+    def display_amount(self):
+        return ("£%.2f" % self.amount)

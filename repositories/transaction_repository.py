@@ -60,10 +60,15 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+#OTHER
 
+def decimalise(num):
+    return ("£%.2f" % num)
+ 
 def get_total():
     total = 0
     transactions = select_all()
     for transaction in transactions:
         total += transaction.amount
-    return total
+    
+    return decimalise(total)
