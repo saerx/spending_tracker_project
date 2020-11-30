@@ -7,7 +7,7 @@
 {% for transaction in transactions %}
 
 <section>
-    <p>You spent {{ transaction.display_amount() }} on {{transaction.tag.name}} at {{transaction.merchant.name}}</p>
+    <p>{{transaction.trans_time}}: You spent {{ transaction.display_amount() }} on {{transaction.tag.name}} at {{transaction.merchant.name}}</p>
     <!-- This adding a 0 thing is very bad code, but I don't know how to fix decimals in html and it works for now so I'm leaving it there just now -->
 </section>
 

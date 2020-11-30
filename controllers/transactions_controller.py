@@ -26,6 +26,7 @@ def new_transaction():
 @transactions_blueprint.route("/transactions", methods=["POST"])
 def create_transaction():
     #Grab the form data for amount, merchant, and tag
+    trans_time = request.form["trans_time"]
     amount = request.form['amount']
     merchant_id = request.form['merchant_id']
     tag_id = request.form['tag_id']
@@ -33,7 +34,7 @@ def create_transaction():
     merchant = merchant_repository.select(merchant_id)
     tag = tag_repository.select(tag_id)
     #creates a new Transaction object
-    transaction = Transaction(amount, merchant, tag)
+    transaction = Transaction(amount, merchant, tag, trans_time)
     transaction_repository.save(transaction)
 
     return redirect('/transactions')

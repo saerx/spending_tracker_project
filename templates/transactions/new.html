@@ -7,6 +7,16 @@
 <form action="/transactions" method="post">
 
 <div>
+    <label for="meeting-time">--What time and date was the transaction--</label>
+
+    <input type="datetime-local" id="trans_time"
+       name="trans_time">
+
+
+
+</div>
+
+<div>
     <label for="amount">Amount</label>
     <input type="number"
            step="0.01"
@@ -19,7 +29,7 @@
 
 <div>
     <label for="merchants">Merchant</label>
-    <select name="merchant_id" id="merhcant">
+    <select name="merchant_id" id="merchant">
         <option value="">--Please choose a merchant</option>
 
         {% for merchant in all_merchants %}

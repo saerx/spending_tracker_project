@@ -10,8 +10,9 @@ import repositories.merchant_repository as merchant_repository
 
 # CREATE
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, merchant_id, tag_id) VALUES (%s, %s, %s) RETURNING id"
-    values = [transaction.amount, transaction.merchant.id, transaction.tag.id]
+    import pdb ; pdb.set_trace()
+    sql = "INSERT INTO transactions (amount, merchant_id, tag_id, trans_time) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.trans_time]
     results = run_sql(sql, values)
     id = results[0]["id"]
     transaction.id = id
@@ -25,7 +26,7 @@ def select_all():
     for result in results:
         merchant = merchant_repository.select(result["merchant_id"])
         tag = tag_repository.select(result["tag_id"])
-        transaction = Transaction(result["amount"], merchant, tag, result["id"])
+        transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
         transactions.append(transaction)
     return transactions
 
@@ -36,15 +37,15 @@ def select(id):
     result = run_sql(sql, values)[0]
     merchant = merchant_repository.select(result["merchant_id"])
     tag = tag_repository.select(result["tag_id"])
-    transaction = Transaction(result["amount"], merchant, tag, result["id"])
+    transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
     return transaction
 
 
 # UPDATE
 
 def update(transaction):
-    sql = "UPDATE transactions SET (amount, merchant_id, tag_id) = (%s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.id]
+    sql = "UPDATE transactions SET (amount, merchant_id, tag_id, trans_time) = (%s, %s, %s, %s ) WHERE id = %s"
+    values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.trans_time, transaction.id]
     run_sql(sql, values)
 
 

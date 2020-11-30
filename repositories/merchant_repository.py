@@ -18,7 +18,6 @@ def select_all():
     sql = "SELECT * FROM merchants"
     results = run_sql(sql)
     for result in results:
-        # import pdb ; pdb.set_trace()
         merchant = Merchant(result["name"], result["id"], result["activated"])
         merchants.append(merchant)
     return merchants

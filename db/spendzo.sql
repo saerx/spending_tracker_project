@@ -18,5 +18,6 @@ CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     amount FLOAT,
     merchant_id SERIAL REFERENCES merchants(id),
-    tag_id SERIAL REFERENCES tags(id)
+    tag_id SERIAL REFERENCES tags(id),
+    trans_time TIMESTAMP
 );

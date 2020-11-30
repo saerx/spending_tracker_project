@@ -1,4 +1,5 @@
 import pdb
+import datetime
 
 from models.tag import Tag
 import repositories.tag_repository as tag_repository
@@ -46,16 +47,18 @@ merchant_repository.save(gft)
 amazon = Merchant("Amazon")
 merchant_repository.save(amazon)
 
-trans_1 = Transaction(12.30, tesco, groceries)
+datetime_1 = datetime.datetime(2020, 10, 7, 6, 2, 0)
+
+trans_1 = Transaction(12.30, tesco, groceries, datetime_1)
 transaction_repository.save(trans_1)
 
-trans_2 = Transaction(5.30, asda, groceries)
+trans_2 = Transaction(5.30, asda, groceries, datetime_1)
 transaction_repository.save(trans_2)
 
-trans_3 = Transaction(15.00, amazon, gifts)
+trans_3 = Transaction(15.00, amazon, gifts, datetime_1)
 transaction_repository.save(trans_3)
 
-trans_4 = Transaction(10.10, amazon, personal_care)
+trans_4 = Transaction(10.10, amazon, personal_care, datetime_1)
 transaction_repository.save(trans_4)
 
 
