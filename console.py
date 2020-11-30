@@ -47,18 +47,21 @@ merchant_repository.save(gft)
 amazon = Merchant("Amazon")
 merchant_repository.save(amazon)
 
-datetime_1 = datetime.datetime(2020, 10, 7, 6, 2, 0)
+datetime_1 = datetime.datetime(2020, 10, 7, 14, 2, 0)
+datetime_2 = datetime.datetime(2020, 9, 5, 13, 3, 0)
+datetime_3 = datetime.datetime(2020, 11, 7, 20, 2, 0)
+datetime_4 = datetime.datetime(2020, 9, 7, 6, 5, 4)
 
 trans_1 = Transaction(12.30, tesco, groceries, datetime_1)
 transaction_repository.save(trans_1)
 
-trans_2 = Transaction(5.30, asda, groceries, datetime_1)
+trans_2 = Transaction(5.30, asda, groceries, datetime_2)
 transaction_repository.save(trans_2)
 
-trans_3 = Transaction(15.00, amazon, gifts, datetime_1)
+trans_3 = Transaction(15.00, amazon, gifts, datetime_3)
 transaction_repository.save(trans_3)
 
-trans_4 = Transaction(10.10, amazon, personal_care, datetime_1)
+trans_4 = Transaction(10.10, amazon, personal_care, datetime_4)
 transaction_repository.save(trans_4)
 
 

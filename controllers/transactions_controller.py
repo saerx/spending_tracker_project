@@ -11,6 +11,8 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
+    sorted_transactions = transactions.sort(key=lambda r:r.trans_time, reverse=True)
+    #I don't know why this works when sorted_transactions isn't referenced again, but it doesn't work when i make transactions=sorted_transactions so it stays I guess
     total = transaction_repository.get_total()
     return render_template("transactions/index.html", transactions=transactions, total=total)
 

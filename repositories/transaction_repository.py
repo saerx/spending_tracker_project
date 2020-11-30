@@ -10,7 +10,6 @@ import repositories.merchant_repository as merchant_repository
 
 # CREATE
 def save(transaction):
-    import pdb ; pdb.set_trace()
     sql = "INSERT INTO transactions (amount, merchant_id, tag_id, trans_time) VALUES (%s, %s, %s, %s) RETURNING id"
     values = [transaction.amount, transaction.merchant.id, transaction.tag.id, transaction.trans_time]
     results = run_sql(sql, values)
