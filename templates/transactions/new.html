@@ -24,7 +24,12 @@
 
         {% for merchant in all_merchants %}
 
-            <option value="{{merchant.id}}">{{merchant.name}}</option>
+                {% if merchant.activated %}
+
+                <option value="{{merchant.id}}">{{merchant.name}}</option>
+
+                {% endif %}
+
             
         {% endfor %}
     </select>
@@ -37,8 +42,12 @@
         <option value="">--Please choose a tag</option>
 
         {% for tag in all_tags %}
+
+            {% if tag.activated == True %}
         
-            <option value="{{tag.id}}">{{tag.name}}</option>
+                <option value="{{tag.id}}">{{tag.name}}</option>
+
+            {% endif %}
             
         {% endfor %}
     </select>
