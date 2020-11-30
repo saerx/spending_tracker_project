@@ -9,13 +9,13 @@
     <section>
             <li>{{ merchant.name }} ({% if merchant.activated %}
                 active
-                <form action="/merchants/{{merchant.id}}/change_status" method="POST">
-                    <button type="submit">Deactivate</button>
+                <form action="/merchants/{{merchant.id}}/deactivate" method="POST">
+                        <button type="submit">Deactivate</button>
                 </form>
             {% else %}
                 de-activated
-                <form action="/merchants/{{merchant.id}}/change_status" method="POST">
-                    <button type="submit">Activate</button>
+                <form action="/merchants/{{merchant.id}}/activate" method="POST">
+                        <button type="submit">Activate</button>
                 </form>
             {% endif %})
             

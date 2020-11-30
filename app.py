@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from controllers.merchants_controller import merchants_blueprint
 from controllers.tags_controller import tags_blueprint

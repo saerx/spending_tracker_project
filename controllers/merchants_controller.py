@@ -3,6 +3,8 @@ from flask import Blueprint, Flask, render_template, redirect, request
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
 
+
+
 merchants_blueprint = Blueprint("merchants", __name__)
 
 #INDEX
@@ -29,9 +31,22 @@ def delete_merchant(id):
     return redirect('/merchants')
 
 #UPDATE
-@merchants_blueprint.route("/merchants/<id>/change_status", methods=["POST"])
-def change_status(id):
-    merchant = merchant_repository.select(id)
-    name = merchant.id
-    new_merchant = Merchant(name, id)
-    merchant_repository.change_active_status(new_merchant)
+# @merchants_blueprint.route("/merchants/<id>/change_status", methods=["POST"])
+# def change_status(id):
+#     # import pdb; pdb.set_trace()
+#     name = request.form["name"]
+#     activated = request.form["activated"]
+#     merchant = Merchant(name, activated, id)
+#     merchant_repository.update(merchant)
+#     return redirect("/merchants")
+
+@merchants_blueprint.route("/merchants/<id>/deactivate", methods=["POST"])
+def deactivate(id):
+    merchant_repository.deactivate(id)
+    return redirect("/merchants")
+
+@merchants_blueprint.route("/merchants/<id>/activate", methods=["POST"])
+def activate(id):
+    merchant_repository.activate(id)
+    return redirect("/merchants")
+

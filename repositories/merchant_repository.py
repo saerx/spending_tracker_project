@@ -4,8 +4,8 @@ from models.merchant import Merchant
 # CREATE
 
 def save(merchant):
-    sql = "INSERT INTO merchants (name) VALUES (%s) RETURNING id"
-    values = [merchant.name]
+    sql = "INSERT INTO merchants (name, activated) VALUES (%s, %s) RETURNING id"
+    values = [merchant.name, merchant.activated]
     results = run_sql(sql, values)
     id = results[0]["id"]
     merchant.id = id
@@ -18,7 +18,8 @@ def select_all():
     sql = "SELECT * FROM merchants"
     results = run_sql(sql)
     for result in results:
-        merchant = Merchant(result["name"], result["id"])
+        # import pdb ; pdb.set_trace()
+        merchant = Merchant(result["name"], result["id"], result["activated"])
         merchants.append(merchant)
     return merchants
 
@@ -26,24 +27,25 @@ def select(id):
     sql = "SELECT * FROM merchants where ID = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    merchant = Merchant(result["name"], result["id"])
+    merchant = Merchant(result["name"], result["id"], result["activated"])
     return merchant
 
 # UPDATE
 
 def update(merchant):
-    sql = "UPDATE merchants SET name = %s WHERE id = %s"
-    values = [merchant.name, merchant.id]
+    sql = "UPDATE merchants SET (name, activated) = (%s, %s) WHERE id = %s"
+    values = [merchant.name, merchant.activated, merchant.id]
     run_sql(sql, values)
 
-def change_active_status(merchant):
-    if merchant.activated == True:
-        sql = "UPDATE merchants SET activated = False WHERE id = %s"
-        values = [merchant.id]
-        run_sql(sql, values)
-    else:
-        sql = "UPDATE merchants SET activated = True WHERE id = %s"
-    
+def deactivate(id):
+    sql = "UPDATE merchants SET activated = %s WHERE id = %s"
+    values = [False, id]
+    run_sql(sql, values)
+
+def activate(id):
+    sql = "UPDATE merchants SET activated = %s WHERE id = %s"
+    values = [True, id]
+    run_sql(sql, values)
 
 # DELETE
 
