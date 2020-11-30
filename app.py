@@ -14,5 +14,9 @@ app.register_blueprint(transactions_blueprint)
 def main():
     return render_template('index.html')
 
+@app.route("/preferences")
+def prefs():
+    return render_template('preferences.html')
+
 if __name__ == '__main__':
     app.run()
