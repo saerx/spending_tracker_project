@@ -16,6 +16,11 @@ h2{
   font-size: 48pt;
 }
 
+h3{
+  color: hotpink;
+  font-size: 30pt;
+}
+
 h4{
   color: hotpink;
   width: fit-content;
@@ -34,4 +39,9 @@ ul{
 .prefs-link {
   width: fit-content;
   margin: auto
+}
+
+#transaction-info{
+  width: fit-content;
+  margin: auto;
 }
