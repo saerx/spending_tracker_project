@@ -4,15 +4,20 @@
     
 <h2>Set Budget</h2>
 
-<form action="/budgets" method="post">
-
     {% if budget %}
 
     <section>
         <p>Your budget is {{ budget.display_amount() }}</p>
+        <form action="/budgets/{{budget.id}}/delete" method="POST">
+            <button type="submit">Delete Budget</button>
+        </form>
     </section>
+
+
         
     {% else %}
+
+    <form action="/budgets" method="post">
 
     <div>
         <label for="amount">Budget</label>

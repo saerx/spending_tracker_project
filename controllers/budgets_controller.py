@@ -8,7 +8,11 @@ budgets_blueprint = Blueprint("budgets", __name__)
 # INDEX
 @budgets_blueprint.route("/budgets")
 def budgets():
-    budget = budget_repository.select_all()[0]
+    budgets = budget_repository.select_all()
+    if len(budgets):
+        budget = budgets[0]
+    else:
+        budget = None
     return render_template("budgets/index.html", budget=budget)
 
 # CREATE
@@ -18,5 +22,13 @@ def create_budget():
     new_budget = Budget(amount)
     budget_repository.save(new_budget)
     return redirect("/budgets")
+
+# DELETE
+
+@budgets_blueprint.route("/budgets/<id>/delete", methods=["POST"])
+def delete_budget(id):
+    budget_repository.delete(id)
+    return redirect("/budgets")
+
 
 

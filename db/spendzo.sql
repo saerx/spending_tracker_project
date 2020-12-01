@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS merchants;
 DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS budgets;
 
 CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,

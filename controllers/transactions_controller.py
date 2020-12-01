@@ -11,7 +11,7 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
-    transactions.sort(key=lambda r:r.trans_time, reverse=True)
+    # transactions.sort(key=lambda r:r.trans_time, reverse=True)
     total = transaction_repository.get_total()
     return render_template("transactions/index.html", transactions=transactions, total=total)
 

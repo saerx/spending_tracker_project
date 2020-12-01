@@ -20,7 +20,7 @@ def save(transaction):
 # READ
 def select_all():
     transactions = []
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY trans_time DESC"
     results = run_sql(sql)
     for result in results:
         merchant = merchant_repository.select(result["merchant_id"])
