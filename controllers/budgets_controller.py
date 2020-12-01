@@ -35,5 +35,6 @@ def change_budget(id):
     amount = request.form["amount"]
     updated_budget = Budget(amount, id)
     budget_repository.update(updated_budget)
+    return redirect("/budgets")
 
 

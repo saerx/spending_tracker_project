@@ -11,6 +11,11 @@ h1{
   margin: auto;
 }
 
+h2{
+  color: hotpink;
+  font-size: 48pt;
+}
+
 header{
   width: fit-content;
   margin: auto;

@@ -32,7 +32,7 @@ def select(id):
 # UPDATE 
 
 def update(budget):
-    sql = "UPDATE budgets SET (amount) = (%s) WHERE id = %s"
+    sql = "UPDATE budgets SET amount = %s WHERE id = %s"
     values = [budget.amount, budget.id]
     run_sql(sql, values)
 

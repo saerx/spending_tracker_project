@@ -10,9 +10,13 @@ import repositories.merchant_repository as merchant_repository
 from models.transaction import Transaction
 import repositories.transaction_repository as transaction_repository
 
+from models.budget import Budget
+import repositories.budget_repository as budget_repository
+
 transaction_repository.delete_all()
 merchant_repository.delete_all()
 tag_repository.delete_all()
+budget_repository.delete_all()
 
 groceries = Tag("Groceries")
 tag_repository.save(groceries)

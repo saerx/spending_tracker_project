@@ -7,7 +7,7 @@
 {% for transaction in transactions %}
 
 <section>
-    <p>{{transaction.trans_time}}: You spent {{ transaction.display_amount() }} on {{transaction.tag.name}} at {{transaction.merchant.name}}</p>
+    <p>{{transaction.trans_time}}: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a> at <a href="/merchants/{{transaction.merchant.id}}">{{transaction.merchant.name}}</a></p>
 </section>
 
 
@@ -20,3 +20,4 @@
 
 <button><a href="/transactions/new">Add New Transaction</a></button>
 
+{% endblock content %}

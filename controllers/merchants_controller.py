@@ -1,7 +1,13 @@
 from flask import Blueprint, Flask, render_template, redirect, request
+import datetime
 
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
+
+from models.transaction import Transaction
+import repositories.transaction_repository as transaction_repository
+
+
 
 
 
@@ -41,4 +47,10 @@ def deactivate(id):
 def activate(id):
     merchant_repository.activate(id)
     return redirect("/merchants")
+
+@merchants_blueprint.route("/merchants/<id>")
+def show(id):
+    merchant = merchant_repository.select(id)
+    
+    return render_template("merchants/show.html", merchant=merchant)
 

@@ -42,6 +42,17 @@ def select(id):
     transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
     return transaction
 
+# def select_for_merchants(merchant_id):
+#     merch_transactions = []
+#     sql = "SELECT * FROM transactions ORDER BY trans_time DESC"
+#     results = run_sql(sql)
+#     for result in results:
+#         merchant = merchant_repository.select(result["merchant_id"])
+#         tag = tag_repository.select(result["tag_id"])
+#         transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
+#         transactions.append(transaction)
+#     return transactions
+
 
 # UPDATE
 
@@ -98,10 +109,10 @@ def budget_alerts():
         return "You have not set a budget."
     elif budget > total >= 0.8*budget:
         return f"You are nearing your budget of {dec_budget}."
-    elif total > budget:
-        return f"You have gone over your budget of {dec_budget}."
     elif total > 2*budget:
         return f"You have greatly exceeded your budget of {dec_budget}, chill out."
+    elif total > budget:
+        return f"You have gone over your budget of {dec_budget}."
     else:
         return f"Your budget is {dec_budget}."
 
