@@ -21,3 +21,9 @@ CREATE TABLE transactions (
     tag_id SERIAL REFERENCES tags(id),
     trans_time TIMESTAMP
 );
+
+CREATE TABLE budget (
+    id SERIAL PRIMARY KEY,
+    amount FLOAT,
+
+);

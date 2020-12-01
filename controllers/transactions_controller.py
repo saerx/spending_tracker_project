@@ -11,8 +11,7 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
-    sorted_transactions = transactions.sort(key=lambda r:r.trans_time, reverse=True)
-    #I don't know why this works when sorted_transactions isn't referenced again, but it doesn't work when i make transactions=sorted_transactions so it stays I guess
+    transactions.sort(key=lambda r:r.trans_time, reverse=True)
     total = transaction_repository.get_total()
     return render_template("transactions/index.html", transactions=transactions, total=total)
 
@@ -27,7 +26,7 @@ def new_transaction():
 #CREATE
 @transactions_blueprint.route("/transactions", methods=["POST"])
 def create_transaction():
-    #Grab the form data for amount, merchant, and tag
+    #Grab the form data for tran_time, amount, merchant, and tag
     trans_time = request.form["trans_time"]
     amount = request.form['amount']
     merchant_id = request.form['merchant_id']
@@ -40,3 +39,7 @@ def create_transaction():
     transaction_repository.save(transaction)
 
     return redirect('/transactions')
+
+@transactions_blueprint.route("/transactions/set_budget", methods=["GET"])
+def set_budget():
+    return render_template("transactions/set_budget.html")
