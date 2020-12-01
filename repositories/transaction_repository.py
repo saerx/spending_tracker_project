@@ -42,16 +42,18 @@ def select(id):
     transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
     return transaction
 
-# def select_for_merchants(merchant_id):
-#     merch_transactions = []
-#     sql = "SELECT * FROM transactions ORDER BY trans_time DESC"
-#     results = run_sql(sql)
-#     for result in results:
-#         merchant = merchant_repository.select(result["merchant_id"])
-#         tag = tag_repository.select(result["tag_id"])
-#         transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
-#         transactions.append(transaction)
-#     return transactions
+def select_for_merchants(merch_id):
+    # import pdb; pdb.set_trace()
+    merch_transactions = []
+    sql = f"SELECT * FROM transactions WHERE merchant_id = {merch_id} ORDER BY trans_time DESC"
+    # I know this is an insecure way to write this but for some reason it wouldn't work the %s way at all 
+    results = run_sql(sql)
+    for result in results:
+        merchant = merchant_repository.select(result["merchant_id"])
+        tag = tag_repository.select(result["tag_id"])
+        transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
+        merch_transactions.append(transaction)
+    return merch_transactions
 
 
 # UPDATE

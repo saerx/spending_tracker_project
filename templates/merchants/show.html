@@ -4,4 +4,13 @@
     
 <h2>{{merchant.name}} Spending</h2>
 
+{% for transaction in transactions %}
+
+<section>
+    <p>{{transaction.trans_time}}: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a></p>
+</section>
+
+
+{% endfor %}
+
 {% endblock content %}

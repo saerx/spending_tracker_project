@@ -50,7 +50,11 @@ def activate(id):
 
 @merchants_blueprint.route("/merchants/<id>")
 def show(id):
+    # import pdb; pdb.set_trace()
     merchant = merchant_repository.select(id)
-    
-    return render_template("merchants/show.html", merchant=merchant)
+    transactions = transaction_repository.select_for_merchants(id)
+    return render_template("merchants/show.html", merchant=merchant, transactions=transactions)
+
+# SHOW
+
 
