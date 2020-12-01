@@ -14,7 +14,7 @@
                 <button type="submit">Deactivate</button>
             </form>
         {% else %}
-            (de-activated)
+            (inactive)
             <form action="/tags/{{tag.id}}/activate" method="POST">
                 <button type="submit">Activate</button>
             </form> 
