@@ -1,4 +1,21 @@
 body{
     font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+    width: fit-content;
+    margin: auto;
   }
-  
+
+h1{
+  color: hotpink;
+  font-size: 72pt;
+  width: fit-content;
+  margin: auto;
+}
+
+header{
+  width: fit-content;
+  margin: auto;
+}
+
+ul{
+  list-style-type: none;
+}
