@@ -4,11 +4,24 @@ body{
     margin: auto;
   }
 
+a{
+  color: skyblue
+}
+
 h1{
   color: hotpink;
   font-size: 72pt;
   width: fit-content;
   margin: auto;
+  
+  }
+
+h1>a{
+  color: hotpink;
+  font-size: 72pt;
+  width: fit-content;
+  margin: auto;
+  text-decoration: none;
 }
 
 h2{
@@ -47,6 +60,11 @@ ul{
 }
 
 #change-tag{
+  width: fit-content;
+  margin: auto;
+}
+
+form{
   width: fit-content;
   margin: auto;
 }

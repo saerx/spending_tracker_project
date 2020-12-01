@@ -7,8 +7,8 @@
 <form action="/transactions" method="post">
 
 <div>
-    <label for="transaction-time">Transaction time</label>
-
+    <label for="transaction-time">Transaction Time:</label>
+    <br>
     <input type="datetime-local" id="trans_time"
        name="trans_time">
 
@@ -16,7 +16,8 @@
 </div>
 
 <div>
-    <label for="amount">Amount</label>
+    <label for="amount">Amount:</label>
+    <br>
     <input type="number"
            step="0.01"
            name="amount"
@@ -27,7 +28,8 @@
 </div>
 
 <div>
-    <label for="merchants">Merchant</label>
+    <label for="merchants">Merchant:</label>
+    <br>
     <select name="merchant_id" id="merchant">
         <option value="">--Please choose a merchant</option>
 
@@ -46,7 +48,8 @@
 
 
 <div>
-    <label for="tags">Tag</label>
+    <label for="tags">Tag:</label>
+    <br>
     <select name="tag_id" id="tag">
         <option value="">--Please choose a tag</option>
 
@@ -61,7 +64,7 @@
         {% endfor %}
     </select>
 </div>
-
+<br>
 <button type="submit">Add Transaction</button>
 
 
