@@ -149,6 +149,7 @@ def get_tag_total(tag_id):
         total += transaction.amount
     return decimalise(total)
 
+# LIST BY MONTH
 
 # def list_by_month(x):
 #     SELECT * FROM transactions WHERE trans_time >= timestamp '2020-09-01' AND trans_time < timestamp '2020-10-01'
