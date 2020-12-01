@@ -24,6 +24,5 @@ CREATE TABLE transactions (
 
 CREATE TABLE budgets (
     id SERIAL PRIMARY KEY,
-    amount FLOAT,
-
+    amount FLOAT
 );

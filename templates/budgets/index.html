@@ -4,4 +4,34 @@
     
 <h2>Set Budget</h2>
 
+<form action="/budgets" method="post">
+
+    {% if budget %}
+
+    <section>
+        <p>Your budget is {{ budget.display_amount() }}</p>
+    </section>
+        
+    {% else %}
+
+    <div>
+        <label for="amount">Budget</label>
+        <input type="number"
+               step="0.01"
+               name="amount"
+               id="amount"
+               required
+               autofocus>
+    </div>
+    
+    <button type="submit">Set budget</button>
+    
+    </form>
+        
+    {% endif %}
+
+    
+
+    
+
 {% endblock content %}
