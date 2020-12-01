@@ -22,7 +22,7 @@ CREATE TABLE transactions (
     trans_time TIMESTAMP
 );
 
-CREATE TABLE budget (
+CREATE TABLE budgets (
     id SERIAL PRIMARY KEY,
     amount FLOAT,
 

@@ -39,7 +39,3 @@ def create_transaction():
     transaction_repository.save(transaction)
 
     return redirect('/transactions')
-
-@transactions_blueprint.route("/transactions/set_budget", methods=["GET"])
-def set_budget():
-    return render_template("transactions/set_budget.html")
