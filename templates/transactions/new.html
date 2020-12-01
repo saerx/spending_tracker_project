@@ -4,13 +4,17 @@
     
 <h1>Add Transaction</h1>
 
-<form action="/transactions" method="post">
+
+<form action="/transactions" method="post" id=new-form>
 
 <div>
     <label for="transaction-time">Transaction Time:</label>
     <br>
-    <input type="datetime-local" id="trans_time"
-       name="trans_time">
+    <input type="datetime-local" 
+           id="trans_time"
+           name="trans_time"
+           required
+           autofocus>
 
 
 </div>
@@ -30,7 +34,9 @@
 <div>
     <label for="merchants">Merchant:</label>
     <br>
-    <select name="merchant_id" id="merchant">
+    <select name="merchant_id" 
+            id="merchant"
+            required>
         <option value="">--Please choose a merchant</option>
 
         {% for merchant in all_merchants %}
@@ -50,7 +56,9 @@
 <div>
     <label for="tags">Tag:</label>
     <br>
-    <select name="tag_id" id="tag">
+    <select name="tag_id" 
+            id="tag"
+            required>
         <option value="">--Please choose a tag</option>
 
         {% for tag in all_tags %}
@@ -64,6 +72,9 @@
         {% endfor %}
     </select>
 </div>
+<br>
+<p>Please note: </p>
+   <p>Once added, transactions cannot be deleted.</p> 
 <br>
 <button type="submit">Add Transaction</button>
 
