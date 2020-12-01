@@ -12,12 +12,26 @@
             <button type="submit">Delete Budget</button>
         </form>
     </section>
+    <br>
+<!-- 
+    <form action="/budgets/{{budget.id}}/change" method="post">
 
-    
-
-
+        <div>
+            <label for="amount">New Budget</label>
+            <input type="number"
+                   step="0.01"
+                   name="amount"
+                   id="amount"
+                   required
+                   autofocus>
+        </div>
         
-    {% else %}
+        <button type="submit">Change budget</button>
+        
+     </form>
+
+
+    {% else %} -->
 
     <form action="/budgets" method="post">
 

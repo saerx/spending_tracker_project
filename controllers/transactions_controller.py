@@ -12,8 +12,9 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     # transactions.sort(key=lambda r:r.trans_time, reverse=True)
-    total = transaction_repository.get_total()
-    return render_template("transactions/index.html", transactions=transactions, total=total)
+    total = transaction_repository.get_decimalised_total()
+    budget_alert = transaction_repository.budget_alerts()
+    return render_template("transactions/index.html", transactions=transactions, total=total, budget_alert=budget_alert)
 
 #NEW
 #Get '/transactions/new'

@@ -30,5 +30,10 @@ def delete_budget(id):
     budget_repository.delete(id)
     return redirect("/budgets")
 
+@budgets_blueprint.route("/budgets/<id>/change", methods=["POST"])
+def change_budget(id):
+    amount = request.form["amount"]
+    updated_budget = Budget(amount, id)
+    budget_repository.update(updated_budget)
 
 

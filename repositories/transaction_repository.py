@@ -8,6 +8,9 @@ import repositories.tag_repository as tag_repository
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
 
+from models.budget import Budget
+import repositories.budget_repository as budget_repository
+
 # CREATE
 def save(transaction):
     sql = "INSERT INTO transactions (amount, merchant_id, tag_id, trans_time) VALUES (%s, %s, %s, %s) RETURNING id"
@@ -71,7 +74,37 @@ def get_total():
     for transaction in transactions:
         total += transaction.amount
     
+    return total
+
+def get_decimalised_total():
+    total = get_total()
     return decimalise(total)
+
+def get_budget():
+    budget = None
+    try:
+        budget = budget_repository.select_all()[0].amount
+    except: 
+        pass
+    finally:
+        return budget
+
+def budget_alerts():
+    budget = get_budget()
+    if budget:
+        dec_budget = decimalise(budget)
+    total = get_total()
+    if budget == None:
+        return "You have not set a budget."
+    elif budget > total >= 0.8*budget:
+        return f"You are nearing your budget of {dec_budget}."
+    elif total > budget:
+        return f"You have gone over your budget of {dec_budget}."
+    elif total > 2*budget:
+        return f"You have greatly exceeded your budget of {dec_budget}, chill out."
+    else:
+        return f"Your budget is {dec_budget}."
+
 
 # def list_by_month(x):
 #     SELECT * FROM transactions WHERE trans_time >= timestamp '2020-09-01' AND trans_time < timestamp '2020-10-01'
