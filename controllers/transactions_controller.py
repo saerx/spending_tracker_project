@@ -62,3 +62,4 @@ def change_tag(id):
     new_trans = Transaction(amount, merchant, tag, trans_time, id)
     transaction_repository.update(new_trans)
     return redirect(f"/transactions/{id}")
+

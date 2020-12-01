@@ -10,10 +10,13 @@
     <p>Tag: <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a></p>
 </section>
 
+<section id=change-tag>
+
 <form action="/transactions/{{transaction.id}}/change_tag" method="post">
 
     <div>
-        <label for="tags">Tag</label>
+        <label for="tags">Change Tag:</label>
+        <br>
         <select name="tag_id" id="tag">
             <option value="">--Please choose a new tag</option>
     
@@ -32,5 +35,8 @@
     <button type="submit">Change tag</button>
     
  </form>
+
+</section>
+
     
 {% endblock content %}
