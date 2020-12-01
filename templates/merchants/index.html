@@ -7,17 +7,17 @@
     {% for merchant in merchants %}
     
     <section>
-            <li>{{ merchant.name }} ({% if merchant.activated %}
-                active
+            <li><a href="/merchants/{{merchant.id}}">{{ merchant.name }}</a> {% if merchant.activated %}
+                (active)
                 <form action="/merchants/{{merchant.id}}/deactivate" method="POST">
                         <button type="submit">Deactivate</button>
                 </form>
             {% else %}
-                de-activated
+                (inactive)
                 <form action="/merchants/{{merchant.id}}/activate" method="POST">
                         <button type="submit">Activate</button>
                 </form>
-            {% endif %})
+            {% endif %}
             
             <form action="/merchants/{{merchant.id}}/delete" method="POST">
                 <button type="submit">Delete Merchant</button>

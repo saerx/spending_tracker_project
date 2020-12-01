@@ -48,13 +48,15 @@ def activate(id):
     merchant_repository.activate(id)
     return redirect("/merchants")
 
+# SHOW
+
 @merchants_blueprint.route("/merchants/<id>")
 def show(id):
-    # import pdb; pdb.set_trace()
     merchant = merchant_repository.select(id)
     transactions = transaction_repository.select_for_merchants(id)
-    return render_template("merchants/show.html", merchant=merchant, transactions=transactions)
+    total = transaction_repository.get_merchant_total(id)
+    return render_template("merchants/show.html", merchant=merchant, transactions=transactions, total=total)
 
-# SHOW
+
 
 

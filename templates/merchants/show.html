@@ -4,6 +4,16 @@
     
 <h2>{{merchant.name}} Spending</h2>
 
+{% if merchant.activated %}
+    <h4>(Active Merchant)</h4>
+
+{% else %}
+
+    <h4>(Inactive Merchant)</h4>
+{% endif %}
+
+
+
 {% for transaction in transactions %}
 
 <section>
@@ -12,5 +22,15 @@
 
 
 {% endfor %}
+
+
+<section>
+    <p>Total spending at {{merchant.name}} is {{total}}</p>
+</section>
+
+<section class=prefs-link>
+    <a href="/merchants">Merchant Preferences</a>
+</section>
+
 
 {% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<h2>{{tag.name}} Spending</h2>
+
+{% if tag.activated %}
+    <h4>(Active Tag)</h4>
+
+{% else %}
+
+    <h4>(Inactive Tag)</h4>
+{% endif %}
+
+
+
+{% for transaction in transactions %}
+
+<section>
+    <p>{{transaction.trans_time}}: You spent {{ transaction.display_amount() }} at <a href="/merchants/{{transaction.merchant.id}}">{{transaction.merchant.name}}</a></p>
+</section>
+
+
+{% endfor %}
+
+
+<section>
+    <p>Total spending at {{tag.name}} is {{total}}</p>
+</section>
+
+<section class=prefs-link>
+    <a href="/tags">Tag Preferences</a>
+</section>
+
+
+{% endblock content %}

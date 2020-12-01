@@ -16,6 +16,12 @@ h2{
   font-size: 48pt;
 }
 
+h4{
+  color: hotpink;
+  width: fit-content;
+  margin: auto
+}
+
 header{
   width: fit-content;
   margin: auto;
@@ -23,4 +29,9 @@ header{
 
 ul{
   list-style-type: none;
+}
+
+.prefs-link {
+  width: fit-content;
+  margin: auto
 }

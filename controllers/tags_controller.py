@@ -1,7 +1,13 @@
 from flask import Blueprint, Flask, render_template, redirect, request
+import datetime
 
 from models.tag import Tag
 import repositories.tag_repository as tag_repository
+
+from models.transaction import Transaction
+import repositories.transaction_repository as transaction_repository
+
+
 
 tags_blueprint = Blueprint("tags", __name__)
 
@@ -21,14 +27,14 @@ def create_tag():
     return redirect("/tags")
 
 
-#DELETE
-#DELETE '/tags/<id>
+# DELETE
+# DELETE '/tags/<id>
 @tags_blueprint.route("/tags/<id>/delete", methods=["POST"])
 def delete_tag(id):
     tag_repository.delete(id)
     return redirect('/tags')
 
-#UPDATE
+# UPDATE
 
 @tags_blueprint.route("/tags/<id>/deactivate", methods=["POST"])
 def deactivate(id):
@@ -39,3 +45,12 @@ def deactivate(id):
 def activate(id):
     tag_repository.activate(id)
     return redirect("/tags")
+
+# SHOW
+
+@tags_blueprint.route("/tags/<id>")
+def show(id):
+    tag = tag_repository.select(id)
+    transactions = transaction_repository.select_for_tags(id)
+    total = transaction_repository.get_tag_total(id)
+    return render_template("tags/show.html", tag=tag, transactions=transactions, total=total)

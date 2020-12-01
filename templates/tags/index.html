@@ -8,17 +8,17 @@
 {% for tag in tags %}
 
 <section>
-        <li>{{ tag.name }} ({% if tag.activated %}
-            active
+        <li><a href="/tags/{{tag.id}}">{{ tag.name }}</a> {% if tag.activated %}
+            (active)
             <form action="/tags/{{tag.id}}/deactivate" method="POST">
                 <button type="submit">Deactivate</button>
             </form>
         {% else %}
-            de-activated
+            (de-activated)
             <form action="/tags/{{tag.id}}/activate" method="POST">
                 <button type="submit">Activate</button>
             </form> 
-        {% endif %})
+        {% endif %}
         <form action="/tags/{{tag.id}}/delete" method="POST">
             <button type="submit">Delete Tag</button>
         </form></li>
