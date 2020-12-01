@@ -100,7 +100,7 @@ def budget_alerts():
     elif budget > total >= 0.8*budget:
         return f"You are nearing your budget of {dec_budget}."
     elif total > 2*budget:
-        return f"You have greatly exceeded your budget of {dec_budget}, chill out."
+        return f"You have greatly exceeded your budget of {dec_budget}."
     elif total > budget:
         return f"You have gone over your budget of {dec_budget}."
     else:

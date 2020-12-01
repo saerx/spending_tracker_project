@@ -8,7 +8,7 @@
 {% for transaction in transactions %}
 
 <section>
-    <p><a href="/transactions/{{transaction.id}}">{{transaction.trans_time.strftime("%m/%d/%Y, %H:%M:%S")}}</a>: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a> at <a href="/merchants/{{transaction.merchant.id}}">{{transaction.merchant.name}}</a></p>
+    <p>{{transaction.trans_time.strftime("%m/%d/%Y")}}, <a href="/transactions/{{transaction.id}}">{{transaction.trans_time.strftime("%H:%M:%S")}}</a>: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a> at <a href="/merchants/{{transaction.merchant.id}}">{{transaction.merchant.name}}</a></p>
 </section>
 
 
@@ -19,6 +19,15 @@
     <p>{{budget_alert}}</p>
 </section>
 
+{% if budget_alert == "You have not set a budget." %}
+    <a href="/budgets">Add budget</a>
+
+{% else %}
+    <a href="/budgets">Change budget</a>
+{% endif %}
+<br>
+<br>
 <a href="/transactions/new">Add New Transaction</a>
+
 
 {% endblock content %}
