@@ -4,7 +4,7 @@ An app that allows a user to track their spending, set budgets, tag their transa
 
 ## To run:
 
-Clone repository, enter:
+Clone repository and then enter:
 
 ```bash
 # terminal
