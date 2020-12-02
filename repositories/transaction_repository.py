@@ -153,5 +153,7 @@ def get_tag_total(tag_id):
 
 # LIST BY MONTH
 
-# def list_by_month(x):
-#     SELECT * FROM transactions WHERE trans_time >= timestamp '2020-09-01' AND trans_time < timestamp '2020-10-01'
+# def list_by_month(month):
+#     month_transactions = []
+#     sql = "SELECT * FROM transactions WHERE trans_time >= timestamp '%s-%s-01' AND trans_time < timestamp '%s-%s-01'"
+#     values = 

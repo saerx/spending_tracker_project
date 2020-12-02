@@ -17,7 +17,7 @@
 {% for transaction in transactions %}
 
 <section>
-    <p>{{transaction.trans_time.strftime("%m/%d/%Y")}}, <a href="/transactions/{{transaction.id}}">{{transaction.trans_time.strftime("%H:%M:%S")}}</a>: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a></p>
+    <p>{{transaction.trans_time.strftime("%d %B, %Y")}}, <a href="/transactions/{{transaction.id}}">{{transaction.trans_time.strftime("%H:%M:%S")}}</a>: You spent {{ transaction.display_amount() }} on <a href="/tags/{{transaction.tag.id}}">{{transaction.tag.name}}</a></p>
 </section>
 
 
