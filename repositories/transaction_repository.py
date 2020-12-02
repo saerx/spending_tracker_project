@@ -112,7 +112,6 @@ def budget_alerts():
 # LIST BY MERCHANTS
 
 def select_for_merchants(merch_id):
-    # import pdb; pdb.set_trace()
     merch_transactions = []
     sql = "SELECT * FROM transactions WHERE merchant_id = %s ORDER BY trans_time DESC"
     values = [merch_id]
@@ -134,7 +133,6 @@ def get_merchant_total(merch_id):
 # LIST BY TAGS
 
 def select_for_tags(tag_id):
-    # import pdb; pdb.set_trace()
     tag_transactions = []
     sql = "SELECT * FROM transactions WHERE tag_id = %s ORDER BY trans_time DESC"
     values = [tag_id]
@@ -156,7 +154,6 @@ def get_tag_total(tag_id):
 # LIST BY MONTH
 
 def select_for_months(year, month):
-    # import pdb; pdb.set_trace()
     month_transactions = []
     if int(month) == 12:
         month_2 = 1
