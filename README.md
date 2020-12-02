@@ -22,8 +22,8 @@ Exit the debugger, launch Flask from spending_tracker_code, and use the app at l
 
 ## Technologies used:
 
-Python, HTML, CSS, PSQL, psycopg2, Flask, and Jinja
-Built in VSCode
+* Python, HTML, CSS, PSQL, psycopg2, Flask, and Jinja
+* Built in VSCode
 
 ## Brief for project:
 
