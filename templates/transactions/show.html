@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h4>Transaction on {{transaction.trans_time.strftime("%m/%d/%Y")}} at {{transaction.trans_time.strftime("%H:%M:%S")}}</h4>
+<h3>Transaction on {{transaction.trans_time.strftime("%d %B %Y")}} at {{transaction.trans_time.strftime("%H:%M:%S")}}</h3>
 
 <section id=transaction-info>
     <p>Amount: {{transaction.display_amount()}}</p>
@@ -39,7 +39,10 @@
 </section>
 <br>
 <section class=prefs-link>
-    
+
+    <a href="/transactions/months/{{transaction.trans_time.strftime("%Y")}}/{{transaction.trans_time.strftime("%m")}}">See all transactions for {{transaction.trans_time.strftime("%B")}}</a>
+    <br>
+    <br>
     <a href="/transactions">Return to Your Spendzo</a>
 </section>
 

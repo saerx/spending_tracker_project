@@ -158,11 +158,10 @@ def get_tag_total(tag_id):
 def select_for_months(year, month):
     # import pdb; pdb.set_trace()
     month_transactions = []
-    if month == 12:
+    if int(month) == 12:
         month_2 = 1
         year_2 = int(year) + 1
     else:
-        # difference = datetime.timedelta(months=1)
         month_2 = int(month) + 1
         year_2 = year
     first_date = f"{year}-{month}-01"
