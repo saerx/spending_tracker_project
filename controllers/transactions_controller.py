@@ -1,4 +1,5 @@
 from flask import Blueprint, Flask, render_template, redirect, request
+import calendar
 
 from models.transaction import Transaction
 import repositories.transaction_repository as transaction_repository
@@ -62,4 +63,12 @@ def change_tag(id):
     new_trans = Transaction(amount, merchant, tag, trans_time, id)
     transaction_repository.update(new_trans)
     return redirect(f"/transactions/{id}")
+
+# SHOW BY MONTH
+
+@transactions_blueprint.route("/transactions/months/<year>/<month>")
+def show_by_month(year, month):
+    transactions = transaction_repository.select_for_months(year, month)
+    return render_template("transactions/show_month.html", transactions=transactions)
+    
 

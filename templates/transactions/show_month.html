@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
-<h1>Your Spendzo</h1>
 
+<h2>{{transactions[0].trans_time.strftime("%B %Y")}}</h2>
 
 {% for transaction in transactions %}
 
@@ -17,24 +16,7 @@
         <a href="/merchants/{{transaction.merchant.id}}">{{transaction.merchant.name}}</a>
     </p>
 </section>
-
-
+    
 {% endfor %}
-
-<section>
-    <p>Total spending = {{total}}</p>
-    <p>{{budget_alert}}</p>
-</section>
-
-{% if budget_alert == "You have not set a budget." %}
-    <a href="/budgets">Add budget</a>
-
-{% else %}
-    <a href="/budgets">Change budget</a>
-{% endif %}
-<br>
-<br>
-<a href="/transactions/new">Add New Transaction</a>
-
-
+    
 {% endblock content %}

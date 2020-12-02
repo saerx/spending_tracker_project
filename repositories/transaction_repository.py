@@ -11,6 +11,8 @@ import repositories.merchant_repository as merchant_repository
 from models.budget import Budget
 import repositories.budget_repository as budget_repository
 
+import datetime
+
 # CREATE
 def save(transaction):
     sql = "INSERT INTO transactions (amount, merchant_id, tag_id, trans_time) VALUES (%s, %s, %s, %s) RETURNING id"
@@ -112,9 +114,9 @@ def budget_alerts():
 def select_for_merchants(merch_id):
     # import pdb; pdb.set_trace()
     merch_transactions = []
-    sql = f"SELECT * FROM transactions WHERE merchant_id = {merch_id} ORDER BY trans_time DESC"
-    # I know this is an insecure way to write this but for some reason it wouldn't work the %s way at all 
-    results = run_sql(sql)
+    sql = "SELECT * FROM transactions WHERE merchant_id = %s ORDER BY trans_time DESC"
+    values = [merch_id]
+    results = run_sql(sql, values)
     for result in results:
         merchant = merchant_repository.select(result["merchant_id"])
         tag = tag_repository.select(result["tag_id"])
@@ -134,9 +136,9 @@ def get_merchant_total(merch_id):
 def select_for_tags(tag_id):
     # import pdb; pdb.set_trace()
     tag_transactions = []
-    sql = f"SELECT * FROM transactions WHERE tag_id = {tag_id} ORDER BY trans_time DESC"
-    # I know this is an insecure way to write this but for some reason it wouldn't work the %s way at all 
-    results = run_sql(sql)
+    sql = "SELECT * FROM transactions WHERE tag_id = %s ORDER BY trans_time DESC"
+    values = [tag_id]
+    results = run_sql(sql, values)
     for result in results:
         merchant = merchant_repository.select(result["merchant_id"])
         tag = tag_repository.select(result["tag_id"])
@@ -153,7 +155,24 @@ def get_tag_total(tag_id):
 
 # LIST BY MONTH
 
-# def list_by_month(month):
-#     month_transactions = []
-#     sql = "SELECT * FROM transactions WHERE trans_time >= timestamp '%s-%s-01' AND trans_time < timestamp '%s-%s-01'"
-#     values = 
+def select_for_months(year, month):
+    # import pdb; pdb.set_trace()
+    month_transactions = []
+    if month == 12:
+        month_2 = 1
+        year_2 = int(year) + 1
+    else:
+        # difference = datetime.timedelta(months=1)
+        month_2 = int(month) + 1
+        year_2 = year
+    first_date = f"{year}-{month}-01"
+    second_date = f"{year_2}-{month_2}-01"
+    sql = "SELECT * FROM transactions WHERE trans_time >= timestamp %s AND trans_time < timestamp %s"
+    values = [first_date, second_date]
+    results = run_sql(sql, values)
+    for result in results:
+        merchant = merchant_repository.select(result["merchant_id"])
+        tag = tag_repository.select(result["tag_id"])
+        transaction = Transaction(result["amount"], merchant, tag, result["trans_time"], result["id"])
+        month_transactions.append(transaction)
+    return month_transactions
