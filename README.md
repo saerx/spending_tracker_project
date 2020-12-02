@@ -4,7 +4,7 @@ An app that allows a user to track their spending, set budgets, tag their transa
 
 ## To run:
 
-Clone repository, enter:
+Clone repository and then enter:
 
 ```bash
 # terminal
@@ -22,8 +22,8 @@ Exit the debugger, launch Flask from spending_tracker_code, and use the app at l
 
 ## Technologies used:
 
-Python, HTML, CSS, PSQL, psycopg2, Flask, and Jinja
-Built in VSCode
+* Python, HTML, CSS, PSQL, psycopg2, Flask, and Jinja
+* Built in VSCode
 
 ## Brief for project:
 
